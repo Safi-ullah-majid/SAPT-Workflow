@@ -1,0 +1,33 @@
+# Gaussian files
+*.log
+*.out
+*.chk
+*.fchk
+
+# Psi4 files
+sapt.in
+sapt.out
+timer.dat
+psi4env/
+
+# Output data
+*.xlsx
+*.csv
+
+# Runtime folders
+uploads/
+sapt_runs/
+sapt_results/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Micromamba
+micromamba/
+
+# OS
+.DS_Store
+Thumbs.db
