@@ -1,27 +1,155 @@
-# 🧪 SAPT Workflow with Psi4
+<div align="center">
 
-> **An automated Google Colab workflow for Symmetry-Adapted Perturbation Theory (SAPT) calculations using Psi4.**
+# ⚛️ SAPT Workflow with Psi4
 
-This notebook streamlines SAPT calculations by automating the entire workflow—from Gaussian output processing to SAPT energy decomposition analysis.
+[![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Psi4](https://img.shields.io/badge/Psi4-Quantum%20Chemistry-orange?style=for-the-badge)](https://psicode.org)
+[![Google Colab](https://img.shields.io/badge/Google%20Colab-Ready-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/yourusername/SAPT-Workflow?style=for-the-badge&logo=github)](https://github.com/yourusername/SAPT-Workflow)
+
+**An automated Google Colab workflow for Symmetry-Adapted Perturbation Theory (SAPT) calculations using Psi4.**
+
+*From Gaussian output → SAPT energy decomposition → publication-ready results. No local installation required.*
+
+[🚀 Open in Colab](#) · [📖 Documentation](#) · [🐛 Report Bug](#) · [💡 Request Feature](#)
+
+---
+
+</div>
+
+## 📸 Overview
+
+> SAPT decomposes noncovalent interaction energies into physically meaningful components — electrostatics, exchange, induction, and dispersion — giving you deep insight into what drives molecular recognition and binding.
+
+This workflow automates the entire pipeline so you can go from a Gaussian output file to a fully analyzed SAPT result in minutes.
 
 ---
 
 ## ✨ Features
 
-- 📂 Upload Gaussian `.log`, `.out`, `.gjf`, or `.xyz` files
-- 🔍 Automatically extract the **final optimized geometry**
-- ✂️ Split the complex into two molecular fragments
-- ⚙️ Generate Psi4 SAPT input automatically
-- 🧮 Run **SAPT0**, **SAPT2**, **SAPT2+**, or **SAPT2+(3)**
-- 📊 Extract:
-  - Electrostatic Energy
-  - Exchange Energy
-  - Induction Energy
-  - Dispersion Energy
-  - Total Interaction Energy
-- 📈 Generate publication-ready plots
-- 📄 Export results to **Excel**, **CSV**, and **TXT**
-- ☁️ Runs entirely on **Google Colab** (no local installation required)
+| Feature | Details |
+|---|---|
+| 📂 **File Support** | Upload `.log`, `.out`, `.gjf`, or `.xyz` files |
+| 🔍 **Auto Geometry Extraction** | Pulls the final optimized geometry from Gaussian output |
+| ✂️ **Fragment Detection** | Splits the complex into two molecular fragments |
+| ⚙️ **Input Generation** | Auto-generates Psi4 SAPT input files |
+| 🧮 **SAPT Levels** | SAPT0 · SAPT2 · SAPT2+ · SAPT2+(3) |
+| 📊 **Energy Decomposition** | Electrostatic · Exchange · Induction · Dispersion · Total |
+| 📈 **Visualization** | Publication-ready bar charts and plots |
+| 📄 **Export** | Excel · CSV · TXT outputs |
+| ☁️ **Zero Setup** | Runs entirely on Google Colab |
+
+---
+
+## 🚀 Workflow Pipeline
+
+```
+┌─────────────────────┐
+│   Gaussian Output   │  (.log / .out / .gjf / .xyz)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  Extract Final      │  Automatically parses optimized geometry
+│  Geometry           │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  Define Fragment    │  Set fragment boundary atom number,
+│  Boundary           │  charge & multiplicity
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  Generate Psi4      │  Auto-built SAPT input with correct
+│  Input File         │  dimer-centered basis
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  Run SAPT           │  SAPT0 / SAPT2 / SAPT2+ / SAPT2+(3)
+│  Calculation        │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  Extract Energy     │  Elst · Exch · Ind · Disp · Total
+│  Components         │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  Excel · CSV · Figures · TXT   │
+└─────────────────────────────────┘
+```
+
+---
+
+## ▶️ Quick Start
+
+### 1 — Open in Colab
+Click the badge above or open `SAPT_Workflow.ipynb` directly in Google Colab.
+
+### 2 — Run All Cells
+All dependencies (Psi4, Pandas, NumPy, Matplotlib) install automatically.
+
+### 3 — Upload Your File
+Upload your Gaussian output when prompted (`.log`, `.out`, `.gjf`, or `.xyz`).
+
+### 4 — Enter Parameters
+
+```
+Fragment 1 last atom number  →  e.g., 42
+Charge of complex            →  e.g., 0
+Multiplicity                 →  e.g., 1
+SAPT level                   →  SAPT0 / SAPT2 / SAPT2+ / SAPT2+(3)
+```
+
+### 5 — Download Results
+All output files are auto-generated and ready to download.
+
+---
+
+## 📊 Output Files
+
+```
+SAPT-Workflow/results/
+│
+├── SAPT_Results.xlsx       ← Full energy table (Excel)
+├── SAPT_Results.csv        ← Machine-readable data
+├── SAPT_Results.txt        ← Human-readable summary
+├── SAPT_BarChart.png       ← Publication-ready bar chart
+└── sapt.out                ← Raw Psi4 output
+```
+
+---
+
+## 📦 Dependencies
+
+All packages are installed automatically inside the notebook. For reference:
+
+```python
+psi4          # Quantum chemistry engine
+pandas        # Data handling & Excel export
+numpy         # Numerical operations
+matplotlib    # Plotting & visualization
+```
+
+> **Requirements:** Google Colab · Python 3.11
+
+---
+
+## 💡 Applications
+
+This workflow is well-suited for studying:
+
+- 🧲 **Noncovalent interactions** — hydrogen bonds, π–π stacking, van der Waals
+- 🏠 **Host–guest complexes** — macrocycle binding, inclusion compounds
+- 🔬 **Molecular adsorption** — surface-molecule interactions
+- 🧬 **Supramolecular chemistry** — self-assembly, recognition
+- 📡 **Organic sensing systems** — sensor-analyte binding analysis
 
 ---
 
@@ -30,13 +158,13 @@ This notebook streamlines SAPT calculations by automating the entire workflow—
 ```
 SAPT-Workflow/
 │
-├── SAPT_Workflow.ipynb
-├── README.md
-├── LICENSE
+├── 📓 SAPT_Workflow.ipynb      ← Main notebook
+├── 📄 README.md
+├── 📜 LICENSE
 │
 ├── examples/
-│   ├── sample.log
-│   └── sample_output.xlsx
+│   ├── sample.log              ← Example Gaussian output
+│   └── sample_output.xlsx      ← Example results
 │
 └── images/
     └── workflow.png
@@ -44,107 +172,50 @@ SAPT-Workflow/
 
 ---
 
-## 🚀 Workflow
-
-```
-Gaussian Output
-       │
-       ▼
-Extract Final Geometry
-       │
-       ▼
-Define Fragment Boundary
-       │
-       ▼
-Generate Psi4 Input
-       │
-       ▼
-Run SAPT Calculation
-       │
-       ▼
-Extract Energy Components
-       │
-       ▼
-Excel • CSV • Figures
-```
-
----
-
-## 📦 Requirements
-
-- Google Colab
-- Python 3.11
-- Psi4
-- Pandas
-- NumPy
-- Matplotlib
-
-All required packages are installed automatically inside the notebook.
-
----
-
-## ▶️ How to Use
-
-1. Open the notebook in Google Colab.
-2. Run all cells.
-3. Upload your Gaussian output (`.log`, `.out`, `.gjf`, or `.xyz`).
-4. Enter:
-   - Fragment 1 last atom number
-   - Charge
-   - Multiplicity
-5. Start the SAPT calculation.
-6. Download the generated results.
-
----
-
-## 📊 Output Files
-
-The notebook automatically generates:
-
-- `SAPT_Results.xlsx`
-- `SAPT_Results.csv`
-- `SAPT_Results.txt`
-- `SAPT_BarChart.png`
-- `sapt.out`
-
----
-
-## 💡 Applications
-
-This workflow can be used for studying:
-
-- Molecular adsorption
-- Host–guest complexes
-- Hydrogen bonding
-- π–π interactions
-- Supramolecular chemistry
-- Organic sensing systems
-- Noncovalent interactions
-
----
-
 ## 📚 Citation
 
-If you use this workflow in your research, please cite the Psi4 software and consider citing this repository.
+If you use this workflow in your research, please cite the Psi4 package and consider citing this repository:
+
+```bibtex
+@misc{SAPT-Workflow,
+  author       = {Your Name},
+  title        = {SAPT Workflow with Psi4},
+  year         = {2025},
+  publisher    = {GitHub},
+  url          = {https://github.com/yourusername/SAPT-Workflow}
+}
+```
+
+> **Psi4 Citation:** D.G.A. Smith et al., *J. Chem. Theory Comput.* **2020**, 16, 2, 727–760.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions, feature requests, and bug reports are welcome.
+Contributions are welcome! Here's how to get involved:
 
-If you have suggestions or improvements, feel free to open an issue or submit a pull request.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/YourFeature`)
+3. Commit your changes (`git commit -m 'Add YourFeature'`)
+4. Push to the branch (`git push origin feature/YourFeature`)
+5. Open a Pull Request
+
+Bug reports and feature requests can be submitted via [Issues](#).
 
 ---
 
 ## 📜 License
 
-This project is released under the **MIT License**.
+Released under the **MIT License** — see [`LICENSE`](LICENSE) for details.
 
 ---
 
-## ⭐ Support
+<div align="center">
 
-If you find this project useful, please consider giving the repository a **⭐ Star**.
+**If this project helped your research, please consider giving it a ⭐ Star.**
 
-It helps others discover the project and supports future development.
+*It helps others discover the workflow and motivates continued development.*
+
+[![Star History](https://img.shields.io/github/stars/yourusername/SAPT-Workflow?style=social)](https://github.com/yourusername/SAPT-Workflow)
+
+</div>
